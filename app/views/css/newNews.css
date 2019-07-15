@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#text author{
+    background-color: #ffffff;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%; 
+}
+label{
+    background-color: #ffffff;
+}
+#main{
+    background-color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    width:30%;
+    margin-top:50px;
+}
+input[type="submit"]{
+margin-bottom: 10px;
+}
+#msg{
+    position: absolute;
+    left: 400px;
+    
+}

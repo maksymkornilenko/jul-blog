@@ -1,6 +1,6 @@
 window.onload = function () {
     // обрезка текста
-    var textBlocks = document.querySelectorAll('p');
+    var textBlocks = document.querySelectorAll('.main');
     for (var i = 0; i < textBlocks.length; i++) {
         var text = textBlocks[i].innerHTML;
         textBlocks[i].innerHTML = '';

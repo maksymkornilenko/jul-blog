@@ -15,7 +15,6 @@ class ControllerSingle extends Controller {
     public function action_index() {
         $this->view->comment = $this->model->getCommentsById();
         $this->view->one = $this->model->get();
-        $this->view->refresh = $this->model->refresh();
         $this->view->render('single_index_view');
     }
     public function action_add() {

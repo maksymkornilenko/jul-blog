@@ -9,7 +9,20 @@ class Route {
         $controller_name = 'main';
         $action_name = 'index';
 
-        $routes = explode('/', $_SERVER['REQUEST_URI']);
+        $routes = explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+        $i = count($routes) - 1;
+        while ($i > 0) {
+            if (!empty($routes[$i])) {
+                if (is_file("app" . DIRECTORY_SEPARATOR . 'controllers\Controller' . ucfirst($routes[$i]) . '.php') || !empty($_GET)) {
+                    $controller_name = 'controllers\Controller' . ucfirst($routes[$i]);
+                    $model_name = 'models\Model' . ucfirst($routes[$i]);
+                    break;
+                } else {
+                    $action_name = $routes[$i];
+                }
+            }
+            $i--;
+        }
         if (count($routes) > 3) {
             self::errorPage404();
         }
@@ -21,6 +34,10 @@ class Route {
 // получаем имя экшена
         if (!empty($routes[2])) {
             $action_name = strtolower($routes[2]);
+            if (is_numeric($action_name)) {
+                $action_name = 'index';
+                $id = $routes[2];
+            }
         }
 // добавляем префиксы
         $controller_name = ucfirst($controller_name);
@@ -46,7 +63,6 @@ class Route {
 
 // создаем контроллер
         $controller = new $controller_name;
-
         if (method_exists($controller, $action_name)) {
             $controller->$action_name();
         } else {

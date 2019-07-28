@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class=" w3-container w3-col l8 s12">
-    <button class="accordion w3-margin w3-card-4 w3-button w3-padding-large w3-white w3-border">add news</button>
+    <button class="accordion w3-margin w3-card-4 w3-button w3-padding-large w3-white w3-border">add comment</button>
     <div class="panel">
         <form method="post" action="/single/add" id="add">
             <input type="hidden" value="<?php echo $content[0]['id']; ?>" name="id"/>
